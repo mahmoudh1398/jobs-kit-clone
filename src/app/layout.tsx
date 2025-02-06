@@ -23,8 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={roboto.variable}>
+    <html lang="fa" dir="rtl">
+      <body
+        style={{ backgroundColor: "rgb(22, 28, 36)" }}
+        className={roboto.variable}
+      >
         <AppRouterCacheProvider>
           <Providers>{children}</Providers>
         </AppRouterCacheProvider>

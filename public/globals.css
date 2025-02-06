@@ -20,3 +20,31 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+/*
+  ---------------
+     Scrollbar
+  ---------------
+*/
+
+::-webkit-scrollbar {
+  height: 0.25rem /* 4px */;
+  width: 0.25rem /* 4px */;
+}
+::-webkit-scrollbar-track {
+  border-radius: 1rem /* 16px */;
+  background-color: rgb(209 213 219 / 0);
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 1rem /* 16px */;
+  background-color: rgb(107 114 128 / 0.8);
+}
+.scrollbar-hide ::-webkit-scrollbar {
+  opacity: 1;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+}
+.scrollbar-hide ::-webkit-scrollbar:hover {
+  opacity: 1;
+}

@@ -1,7 +1,5 @@
+import Box from "@mui/material/Box";
+
 export default function PageHome() {
-  return (
-    <div>
-      <main>صفحه اصلی</main>
-    </div>
-  );
+  return <Box></Box>;
 }
