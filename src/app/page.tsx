@@ -1,7 +1,5 @@
-export default function DashboardPage() {
-  return (
-    <div>
-      <main>DashboardPage</main>
-    </div>
-  );
+import PageHome from "@/features/home/components/PageHome";
+
+export default function HomePage() {
+  return <PageHome />;
 }
