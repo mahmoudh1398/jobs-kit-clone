@@ -1,17 +1,17 @@
-"use client";
-
 import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Link from "next/link";
 import Box from "@mui/material/Box";
 import Image from "next/image";
-import logo from "public/layout/logo.webp";
+import logo from "public/images/layout/logo.webp";
 import { ROUTES } from "@/lib/configs/routes";
-import { usePathname } from "next/navigation";
+import { headers } from "next/headers";
+import { webRoute } from "@/lib/services/routes/webRoute";
 
-export default function Header() {
-  const pathname = usePathname();
+export default async function Header() {
+  const headerList = headers();
+  const pathname = (await headerList).get("x-current-path");
 
   return (
     <AppBar
@@ -52,10 +52,11 @@ export default function Header() {
               maxWidth: "100%",
             }}
           >
-            <Link href="/">
+            <Link href={webRoute.home()}>
               <Image
                 src={logo}
                 alt="logo"
+                priority
                 width={100}
                 height={25}
                 style={{
@@ -118,11 +119,12 @@ export default function Header() {
             borderRadius: "8px",
             ":hover": {
               outline: "1px solid white",
+              backgroundColor: "#ffffff15",
             },
           }}
         >
           <Link
-            href="/dashboard"
+            href={webRoute.dashboard()}
             style={{
               verticalAlign: "middle",
               textAlign: "center",
