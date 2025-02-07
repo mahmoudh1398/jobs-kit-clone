@@ -10,16 +10,13 @@ export const config = {
 };
 
 export default async function middleware(req: NextRequest) {
-  // Add a new header x-current-path which passes the path to downstream components
-  const headers = new Headers(req.headers);
-  headers.set("x-current-path", req.nextUrl.pathname);
   const { pathname } = req.nextUrl;
   const session = await getSession();
   if (pathname === webRoute.login()) {
     if (session?.token) {
       return NextResponse.redirect(new URL(webRoute.dashboard(), req.url));
     }
-    return NextResponse.next({ headers });
+    return NextResponse.next();
   }
 
   if (pathname === webRoute.dashboard() && !session?.token) {
@@ -27,5 +24,5 @@ export default async function middleware(req: NextRequest) {
   }
 
   // Allow authenticated users to access the route
-  return NextResponse.next({ headers });
+  return NextResponse.next();
 }
