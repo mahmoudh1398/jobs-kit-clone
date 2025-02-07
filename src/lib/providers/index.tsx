@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import MuiProvider from "./MuiProvider";
+import ToastifyProvider from "./ToastifyProvider";
 
 export default function Providers({
   children,
@@ -8,6 +9,7 @@ export default function Providers({
 }>) {
   return (
     <MuiProvider>
+      <ToastifyProvider />
       <Suspense>{children}</Suspense>
     </MuiProvider>
   );

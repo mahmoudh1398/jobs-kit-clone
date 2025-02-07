@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getSession } from "./lib/actions/authActions";
 import { webRoute } from "./lib/services/routes/webRoute";
+import { getToken } from "./lib/actions/authActions";
 
 export const config = {
   matcher: [
@@ -11,15 +11,15 @@ export const config = {
 
 export default async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-  const session = await getSession();
+  const token = await getToken();
   if (pathname === webRoute.login()) {
-    if (session?.token) {
+    if (token) {
       return NextResponse.redirect(new URL(webRoute.dashboard(), req.url));
     }
     return NextResponse.next();
   }
 
-  if (pathname === webRoute.dashboard() && !session?.token) {
+  if (pathname === webRoute.dashboard() && !token) {
     return NextResponse.redirect(new URL(webRoute.login(), req.url));
   }
 

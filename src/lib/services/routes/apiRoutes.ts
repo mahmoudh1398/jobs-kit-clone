@@ -2,16 +2,16 @@ class Users {
   private readonly base: string;
   auth = {
     login: () => {
-      return this.base + "login/";
+      return this.base + "login";
     },
   };
 
   constructor() {
-    this.base = "users/";
+    this.base = "user/";
   }
 
-  getMe() {
-    return this.base + "get-me/";
+  whoAmI() {
+    return this.base + "whoami";
   }
 }
 

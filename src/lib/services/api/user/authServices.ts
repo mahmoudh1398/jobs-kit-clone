@@ -1,11 +1,20 @@
-import { ILoginResponse, ILoginValues } from "@/lib/types/api/user";
-import axios from "@/lib/services/api/base";
+import { ILoginResponse, ILoginValues, IWhoAmI } from "@/lib/types/api/user";
+import { BaseService } from "../base";
 import { UsersRoute } from "../../routes/apiRoutes";
+import { IResponse } from "@/lib/types/api/base";
 
-class Requests {
+class UserService extends BaseService {
   login(values: ILoginValues) {
-    return axios.post<ILoginResponse>(UsersRoute.auth.login(), values);
+    return this.axiosInstanceWithoutToken.post<ILoginResponse>(
+      UsersRoute.auth.login(),
+      values
+    );
+  }
+  whoAmI() {
+    return this.axiosInstanceWithToken.get<IResponse<IWhoAmI>>(
+      UsersRoute.whoAmI()
+    );
   }
 }
 
-export const AuthServices = new Requests();
+export const AuthServices = new UserService();
