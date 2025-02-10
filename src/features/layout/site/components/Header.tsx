@@ -15,10 +15,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { usePathname } from "next/navigation";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { useUserStore } from "@/lib/store/userStore";
 
 export default function Header() {
   const pathname = usePathname();
-
+  const { userData } = useUserStore();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -163,7 +164,7 @@ export default function Header() {
                   fontSize: "14px",
                 }}
               >
-                ورود
+                {!!userData ? "داشبورد" : "ورود"}
               </Link>
             </Box>
             <Box sx={{ display: { xs: "flex", md: "none" } }}>

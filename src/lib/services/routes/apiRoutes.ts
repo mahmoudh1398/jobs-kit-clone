@@ -24,7 +24,7 @@ class Jobs {
     this.base = "job/all";
   }
 
-  getAll(searchParams?: IJobsParams) {
+  getJobs(searchParams?: IJobsParams) {
     return searchParams ? `${this.base}?${searchParams}` : this.base;
   }
 }
