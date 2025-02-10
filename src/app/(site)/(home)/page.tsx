@@ -1,5 +1,5 @@
-import PageHome from "@/features/site/home/components/PageHome";
+import { Box } from "@mui/material";
 
 export default function HomePage() {
-  return <PageHome />;
+  return <Box component="main">HomePage</Box>;
 }

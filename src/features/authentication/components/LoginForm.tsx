@@ -25,7 +25,7 @@ import { webRoute } from "@/lib/services/routes/webRoute";
 import { useUserStore } from "@/lib/store/userStore";
 import { AuthServices } from "@/lib/services/api/user/authServices";
 
-export default function PageLogin() {
+export default function LoginForm() {
   const router = useRouter();
   const outerTheme = useTheme();
   const { setUserData } = useUserStore();
@@ -42,15 +42,10 @@ export default function PageLogin() {
 
   const handleMouseDownPassword = (
     event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
-  };
+  ) => event.preventDefault();
 
-  const handleMouseUpPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
+  const handleMouseUpPassword = (event: React.MouseEvent<HTMLButtonElement>) =>
     event.preventDefault();
-  };
 
   const onSubmit: SubmitHandler<ILoginValues> = async (values) => {
     setIsLoading(true);
@@ -59,14 +54,9 @@ export default function PageLogin() {
         identifier: values.identifier,
         password: values.password,
       });
-
       const resWhoAmI = await AuthServices.whoAmI();
-
-      if (resWhoAmI.data.data) {
-        setUserData(resWhoAmI.data.data);
-      }
+      setUserData(resWhoAmI.data);
       router.push(webRoute.dashboard());
-
       toast.success("ورود با موفقیت انجام شد.");
     } catch (e) {
       console.log(e);

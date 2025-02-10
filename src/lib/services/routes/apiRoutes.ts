@@ -1,3 +1,5 @@
+import { IJobsParams } from "@/lib/types/api/job";
+
 class Users {
   private readonly base: string;
   auth = {
@@ -15,4 +17,17 @@ class Users {
   }
 }
 
+class Jobs {
+  private readonly base: string;
+
+  constructor() {
+    this.base = "job/all";
+  }
+
+  getAll(searchParams?: IJobsParams) {
+    return searchParams ? `${this.base}?${searchParams}` : this.base;
+  }
+}
+
 export const UsersRoute = new Users();
+export const JobsRoute = new Jobs();

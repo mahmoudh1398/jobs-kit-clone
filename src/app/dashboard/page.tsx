@@ -1,6 +1,11 @@
-import PageDashboard from "@/features/dashboard/components/PageDashboard";
 import React from "react";
+import { Box } from "@mui/material";
+import JobsList from "@/features/dashboard/components/JobsList";
 
 export default function DashboardPage() {
-  return <PageDashboard />;
+  return (
+    <Box component="main">
+      <JobsList />
+    </Box>
+  );
 }

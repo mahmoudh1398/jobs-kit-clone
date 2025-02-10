@@ -41,7 +41,6 @@ export async function getToken() {
 export async function signOut() {
   try {
     await setCookie("");
-
     redirect(webRoute.login());
   } catch (error) {
     throw error;

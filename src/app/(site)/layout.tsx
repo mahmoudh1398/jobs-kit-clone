@@ -1,10 +1,23 @@
 import React from "react";
-import LayoutSite from "@/features/layout/site/components/Layout";
+import { Box } from "@mui/material";
+import Header from "@/features/layout/site/components/Header";
 
 export default function SiteLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <LayoutSite>{children}</LayoutSite>;
+  return (
+    <Box
+      component="main"
+      sx={{
+        height: "100vh",
+      }}
+    >
+      <Header />
+      <Box component="section" sx={{ marginTop: "80px" }}>
+        {children}
+      </Box>
+    </Box>
+  );
 }
