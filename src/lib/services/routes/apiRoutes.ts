@@ -25,6 +25,10 @@ class Jobs {
   getJobs() {
     return this.base;
   }
+
+  getUserJobs() {
+    return this.base + "/detailed";
+  }
 }
 
 export const UsersRoute = new Users();

@@ -1,11 +1,18 @@
 import React from "react";
 import { Box } from "@mui/material";
-// import JobsList from "@/features/site/job/components/JobsList";
+import LoaderWrapper from "@/features/dashboard/components/LoaderWrapper";
 
 export default function DashboardPage() {
   return (
-    <Box component="main">
-      {/* <JobsList data={{ }} /> */}
+    <Box
+      component="main"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "20px",
+      }}
+    >
+      <LoaderWrapper />
     </Box>
   );
 }

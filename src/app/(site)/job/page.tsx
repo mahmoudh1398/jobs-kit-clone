@@ -32,10 +32,29 @@ export default async function JobsPage(props: {
       }}
     >
       <SearchInput />
-      <Suspense key={title + currentPage} fallback={<CircularProgress />}>
-        <JobsList data={data.data} />
+      <Suspense
+        key={title + currentPage}
+        fallback={
+          <Box
+            component="div"
+            sx={{
+              border: "1px solid red",
+              width: "100%",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100%",
+              color: "white",
+            }}
+          >
+            <CircularProgress />
+          </Box>
+        }
+      >
+        <JobsList jobs={data.data.data} />
       </Suspense>
-      <CustomPagination count={data.data?.pagination?.totalPages || 1} />
+      <CustomPagination count={data.data.pagination.totalPages || 1} />
     </Box>
   );
 }

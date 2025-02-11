@@ -8,6 +8,12 @@ class JobService extends BaseService {
       params,
     });
   }
+
+  getUserJobs(params?: Partial<IJobsParams>) {
+    return this.axiosInstanceWithToken.get(JobsRoute.getUserJobs(), {
+      params,
+    });
+  }
 }
 
 export const JobServices = new JobService();

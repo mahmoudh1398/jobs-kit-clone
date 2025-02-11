@@ -35,6 +35,11 @@ export interface IJob {
   shares: number;
 }
 
+export interface IUserJob extends IJob {
+  bookmarked: boolean;
+  applicationId: number | null;
+}
+
 export interface SubCategory {
   id: number;
   name: string;
