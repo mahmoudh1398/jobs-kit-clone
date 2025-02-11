@@ -33,7 +33,10 @@ export default function LoaderWrapper() {
   return (
     <Box component="div">
       <Suspense fallback={<CircularProgress />}>
-        <UserJobsList jobs={data?.data ?? []} />
+        <UserJobsList
+          jobs={data?.data ?? []}
+          onToggleJobBookmark={() => handleGetJobs()}
+        />
       </Suspense>
       <CustomPagination
         count={data?.pagination?.totalPages || 1}

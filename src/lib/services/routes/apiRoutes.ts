@@ -29,6 +29,10 @@ class Jobs {
   getUserJobs() {
     return this.base + "/detailed";
   }
+
+  bookmarkJob(id: number) {
+    return `bookmark/${id}`;
+  }
 }
 
 export const UsersRoute = new Users();

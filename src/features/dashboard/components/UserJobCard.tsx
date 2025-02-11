@@ -4,11 +4,12 @@ import {
   Box,
   Card,
   CardContent,
+  CircularProgress,
   Divider,
   IconButton,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import ShareIcon from "@mui/icons-material/Share";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,13 +21,34 @@ import WarehouseOutlinedIcon from "@mui/icons-material/WarehouseOutlined";
 import WorkIcon from "@mui/icons-material/Work";
 import PersonIcon from "@mui/icons-material/Person";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import { JobServices } from "@/lib/services/api/job/jobServices";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 
 interface IProps {
   job: IUserJob;
+  onToggleJobBookmark: () => void;
 }
 
-export default function UserJobCard({ job }: IProps) {
+export default function UserJobCard({ job, onToggleJobBookmark }: IProps) {
   const isClient = useIsClient();
+
+  const [bookmarkToggleLoading, setBookmarkToggleLoading] = useState(false);
+
+  const handleToggleBookmark = async () => {
+    try {
+      setBookmarkToggleLoading(true);
+      if (job.bookmarked) {
+        await JobServices.removeBookmarkJob(job.id);
+      } else {
+        await JobServices.bookmarkJob(job.id);
+      }
+      onToggleJobBookmark();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setBookmarkToggleLoading(false);
+    }
+  };
 
   if (!isClient) return;
 
@@ -47,9 +69,17 @@ export default function UserJobCard({ job }: IProps) {
             m: "8px",
           }}
         >
-          <IconButton aria-label="bookmark" size="small">
-            <BookmarkBorderIcon />
-          </IconButton>
+          {bookmarkToggleLoading ? (
+            <CircularProgress size="24px" />
+          ) : (
+            <IconButton
+              onClick={handleToggleBookmark}
+              aria-label="bookmark"
+              size="small"
+            >
+              {job.bookmarked ? <BookmarkIcon /> : <BookmarkBorderIcon />}
+            </IconButton>
+          )}
           <IconButton aria-label="share" size="small">
             <ShareIcon />
           </IconButton>

@@ -14,6 +14,14 @@ class JobService extends BaseService {
       params,
     });
   }
+
+  bookmarkJob(id: number) {
+    return this.axiosInstanceWithToken.post(JobsRoute.bookmarkJob(id));
+  }
+
+  removeBookmarkJob(id: number) {
+    return this.axiosInstanceWithToken.delete(JobsRoute.bookmarkJob(id));
+  }
 }
 
 export const JobServices = new JobService();

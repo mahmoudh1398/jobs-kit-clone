@@ -19,20 +19,20 @@ export interface IJobsParams {
 export interface IJob {
   id: number;
   title: string;
-  featured?: boolean;
+  featured: boolean;
   datePosted: string;
-  expirationDate?: string;
-  employmentType?: string;
-  positionLevel?: string;
-  company?: Company;
-  country?: string;
-  location?: string;
+  expirationDate: string;
+  employmentType: string;
+  positionLevel: string;
+  company: Company;
+  country: string;
+  location: string;
   category: Category;
-  subCategory?: SubCategory;
-  speciality?: SubCategory;
+  subCategory: SubCategory;
+  speciality: SubCategory;
   jobType: string;
-  views?: number;
-  shares?: number;
+  views: number;
+  shares: number;
 }
 
 export interface IUserJob extends IJob {
