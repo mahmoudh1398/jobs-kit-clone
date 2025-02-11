@@ -65,8 +65,6 @@ export default function JobCard({ job }: IProps) {
                 src={job?.company?.imageURL}
                 alt="co_icon"
                 fill
-                objectFit="cover"
-                objectPosition="center"
                 style={{
                   borderRadius: "12px",
                   maxWidth: "48px",
@@ -165,6 +163,9 @@ export default function JobCard({ job }: IProps) {
               display: "flex",
               alignItems: "center",
               gap: "2px",
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
             }}
           >
             <WarehouseOutlinedIcon fontSize={"small"} />
@@ -214,6 +215,9 @@ export default function JobCard({ job }: IProps) {
               display: "flex",
               alignItems: "center",
               gap: "2px",
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
             }}
           >
             <WarehouseIcon fontSize={"small"} />

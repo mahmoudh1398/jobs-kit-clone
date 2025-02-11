@@ -1,5 +1,3 @@
-import { IJobsParams } from "@/lib/types/api/job";
-
 class Users {
   private readonly base: string;
   auth = {
@@ -24,8 +22,8 @@ class Jobs {
     this.base = "job/all";
   }
 
-  getJobs(searchParams?: IJobsParams) {
-    return searchParams ? `${this.base}?${searchParams}` : this.base;
+  getJobs() {
+    return this.base;
   }
 }
 

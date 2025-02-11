@@ -8,6 +8,12 @@ export interface IJobsParams {
   categorySlugs: string[];
   subCategorySlugs: string[];
   specialitySlugs: string[];
+  page: number;
+  limit: 9;
+  order: "DESC" | "ASC";
+  orderBy: string;
+  expired: boolean;
+  title: string;
 }
 
 export interface IJob {

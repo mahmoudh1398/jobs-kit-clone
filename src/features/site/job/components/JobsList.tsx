@@ -11,11 +11,10 @@ interface IProps {
 }
 
 export default function JobsList({ data }: IProps) {
-  const { data: jobs } = data;
   return (
     <Grid container spacing={3} sx={{ margin: "64px 32px" }}>
-      {jobs?.map((job) => (
-        <Grid size={4} key={job.id}>
+      {data?.data?.map((job) => (
+        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={job.id}>
           <JobCard job={job} />
         </Grid>
       ))}

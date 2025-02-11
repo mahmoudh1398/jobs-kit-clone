@@ -15,9 +15,7 @@ export default function SiteLayout({
       }}
     >
       <Header />
-      <Box component="section" sx={{ marginTop: "80px" }}>
-        {children}
-      </Box>
+      <Box component="section">{children}</Box>
     </Box>
   );
 }
