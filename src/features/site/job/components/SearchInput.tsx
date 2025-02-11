@@ -5,10 +5,11 @@ import { Stack, TextField, ThemeProvider, useTheme } from "@mui/material";
 import { customTheme } from "@/lib/configs/customThem";
 import { debounce } from "@/lib/tools/debounce";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { useIsClient } from "@/lib/hooks/useIsClient";
 
 export default function SearchInput() {
   const outerTheme = useTheme();
-
+  const isClient = useIsClient();
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -26,6 +27,8 @@ export default function SearchInput() {
     }
     replace(`${pathname}?${params.toString()}`);
   });
+
+  if (!isClient) return;
 
   return (
     <ThemeProvider theme={customTheme(outerTheme)}>

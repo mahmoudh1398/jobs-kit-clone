@@ -1,7 +1,8 @@
 import CssBaseline from "@mui/material/CssBaseline";
-import { isClient } from "../tools/isClient";
+import { useIsClient } from "../hooks/useIsClient";
 
 export default function CssBaselineProvider() {
+  const isClient = useIsClient();
   if (!isClient) return;
 
   return (

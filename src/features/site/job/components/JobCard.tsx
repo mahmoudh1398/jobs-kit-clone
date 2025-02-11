@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { IJob } from "@/lib/types/api/job";
 import {
@@ -18,12 +20,17 @@ import capitalize from "@/lib/tools/capitalize";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import WarehouseIcon from "@mui/icons-material/Warehouse";
 import WarehouseOutlinedIcon from "@mui/icons-material/WarehouseOutlined";
+import { useIsClient } from "@/lib/hooks/useIsClient";
 
 interface IProps {
   job: IJob;
 }
 
 export default function JobCard({ job }: IProps) {
+  const isClient = useIsClient();
+
+  if (!isClient) return;
+
   return (
     <Card
       sx={{
