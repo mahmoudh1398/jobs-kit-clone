@@ -6,9 +6,10 @@ import React from "react";
 
 interface IProps {
   count: number;
+  currentPage: number;
 }
 
-export default function CustomPagination({ count }: IProps) {
+export default function CustomPagination({ count, currentPage }: IProps) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -33,6 +34,7 @@ export default function CustomPagination({ count }: IProps) {
       count={count}
       color="standard"
       onChange={handleChangePage}
+      page={currentPage}
       sx={{
         width: "100%",
         display: "flex",

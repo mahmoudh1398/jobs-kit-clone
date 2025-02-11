@@ -4,6 +4,7 @@ import { JobServices } from "@/lib/services/api/job/jobServices";
 import JobsList from "@/features/site/job/components/JobsList";
 import SearchInput from "@/features/site/job/components/SearchInput";
 import CustomPagination from "@/components/CustomPagination";
+import AddNewJobForm from "@/features/site/job/components/AddNewJobForm";
 
 export default async function JobsPage(props: {
   searchParams?: Promise<{
@@ -32,6 +33,7 @@ export default async function JobsPage(props: {
       }}
     >
       <SearchInput />
+      <AddNewJobForm />
       <Suspense
         key={title + currentPage}
         fallback={
@@ -54,7 +56,10 @@ export default async function JobsPage(props: {
       >
         <JobsList jobs={data.data.data} />
       </Suspense>
-      <CustomPagination count={data.data.pagination.totalPages || 1} />
+      <CustomPagination
+        count={data.data.pagination.totalPages || 1}
+        currentPage={currentPage}
+      />
     </Box>
   );
 }

@@ -47,11 +47,11 @@ export default function UserJobCard({ job }: IProps) {
             m: "8px",
           }}
         >
-          <IconButton aria-label="share" size="small">
-            <ShareIcon />
-          </IconButton>
           <IconButton aria-label="bookmark" size="small">
             <BookmarkBorderIcon />
+          </IconButton>
+          <IconButton aria-label="share" size="small">
+            <ShareIcon />
           </IconButton>
         </Box>
         <Box
